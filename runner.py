@@ -10,7 +10,7 @@ def run(count):
     fetcher = FakeFetcher()
     persistor = FakePersistor("sample.txt")
 
-    for item in fetcher.get(count):
+    for item in fetcher(count):
         for processor in processors:
             processor.process(item)
         pp(item)

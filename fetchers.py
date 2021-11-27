@@ -11,3 +11,8 @@ class FakeFetcher:
                 "Number": random.randrange(1, 1200)
             }
             yield transaction
+
+    def __call__(self, count):
+        return self.get(count)
+    
+
