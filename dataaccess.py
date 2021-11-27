@@ -1,11 +1,10 @@
-import pyodbc
 from pprint import pprint as pp
 
-try:
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=.;DATABASE=Northwind;UID=sa;PWD=AskB4ntRy')
+import pyodbc
 
+with pyodbc.connect('DRIVER={SQL Server};SERVER=.;DATABASE=Northwind;UID=sa;PWD=AskB4ntRy') as conn:
     cur = conn.cursor()
-    ret = cur.execute('select * from Customers')
+    ret = cur.execute('GetCustomers')
 
     for row in ret:
         pp(row)
@@ -14,8 +13,3 @@ try:
 
     for row in ret:
         pp(row)
-
-finally:
-    conn.close()
-
-
